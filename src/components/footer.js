@@ -13,7 +13,7 @@ const footer =() =>{
             <img src="assets/images/white-logo.png" alt="hexashop ecommerce templatemo" />
           </div>
           <ul>
-            <li><a href="#">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a></li>
+            <li><a href="">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a></li>
             <li><a href="#">hexashop@company.com</a></li>
             <li><a href="#">010-020-0340</a></li>
           </ul>
