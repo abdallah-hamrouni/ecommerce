@@ -11,7 +11,7 @@ const header =() =>{
       <nav className="main-nav">
         {/* ***** Logo Start ***** */}
         <a href="index.html" className="logo">
-          <img src="assets/images/logo.png" alt="Description alternative de l'image"/>
+        <img src="assets/images/logo.png" alt=""/>
         </a>
         {/* ***** Logo End ***** */}
         {/* ***** Menu Start ***** */}
