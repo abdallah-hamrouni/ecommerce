@@ -2,10 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-
-
-
+import Header from './header';
+import Footer from './footer';
 const home = () => {
   const settings = {
     dots: true,
@@ -16,7 +14,9 @@ const home = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-
+    arrows: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
 
     responsive: [
       {
@@ -38,66 +38,66 @@ const home = () => {
     ],
   };
   const womenItems = [
-  {
-    id: 1,
-    imgSrc: "assets/images/women-01.jpg",
-    title: "New Green Jacket",
-    price: "$75.00",
-    stars: 5,
-  },
-  {
-    id: 2,
-    imgSrc: "assets/images/women-02.jpg",
-    title: "Classic Dress",
-    price: "$45.00",
-    stars: 4,
-  },
-  {
-    id: 3,
-    imgSrc: "assets/images/women-03.jpg",
-    title: "Spring Collection",
-    price: "$130.00",
-    stars: 5,
-  },
-  {
-    id: 4,
-    imgSrc: "assets/images/women-01.jpg",
-    title: "Classic Spring",
-    price: "$120.00",
-    stars: 4,
-  },
-];
+    {
+      id: 1,
+      imgSrc: "assets/images/women-01.jpg",
+      title: "New Green Jacket",
+      price: "$75.00",
+      stars: 5,
+    },
+    {
+      id: 2,
+      imgSrc: "assets/images/women-02.jpg",
+      title: "Classic Dress",
+      price: "$45.00",
+      stars: 4,
+    },
+    {
+      id: 3,
+      imgSrc: "assets/images/women-03.jpg",
+      title: "Spring Collection",
+      price: "$130.00",
+      stars: 5,
+    },
+    {
+      id: 4,
+      imgSrc: "assets/images/women-01.jpg",
+      title: "Classic Spring",
+      price: "$120.00",
+      stars: 4,
+    },
+  ];
 
   const kidsItems = [
-  {
-    id: 1,
-    imgSrc: "assets/images/kid-01.jpg",
-    title: "School Collection",
-    price: "$80.00",
-    stars: 5,
-  },
-  {
-    id: 2,
-    imgSrc: "assets/images/kid-02.jpg",
-    title: "Summer Cap",
-    price: "$12.00",
-    stars: 4,
-  },
-  {
-    id: 3,
-    imgSrc: "assets/images/kid-03.jpg",
-    title: "Classic Kid",
-    price: "$30.00",
-    stars: 5,
-  },
-  {
-    id: 4,
-    imgSrc: "assets/images/kid-01.jpg",
-    title: "Classic Spring",
-    price: "$120.00",
-    stars: 4,
-  },
-];
+    {
+      id: 1,
+      imgSrc: "assets/images/kid-01.jpg",
+      title: "School Collection",
+      price: "$80.00",
+      stars: 5,
+    },
+    {
+      id: 2,
+      imgSrc: "assets/images/kid-02.jpg",
+      title: "Summer Cap",
+      price: "$12.00",
+      stars: 4,
+    },
+    {
+      id: 3,
+      imgSrc: "assets/images/kid-03.jpg",
+      title: "Classic Kid",
+      price: "$30.00",
+      stars: 5,
+    },
+    {
+      id: 4,
+      imgSrc: "assets/images/kid-01.jpg",
+      title: "Classic Spring",
+      price: "$120.00",
+      stars: 4,
+    },
+  ];
 
   const items = [
     {
@@ -132,6 +132,7 @@ const home = () => {
 
   return (
     <div>
+      <Header/>
       <div>
         <div className="main-banner" id="top">
           <div className="container-fluid">
@@ -143,7 +144,7 @@ const home = () => {
                       <h4>We Are Hexashop</h4>
                       <span>Awesome, clean &amp; creative HTML5 Template</span>
                       <div className="main-border-button">
-                        <a href="#">Purchase Now!</a>
+                        <a href="/">Purchase Now!</a>
                       </div>
                     </div>
                     <img src="assets/images/left-banner-image.jpg" alt="" />
@@ -168,11 +169,11 @@ const home = () => {
                                 adipiscing elit incid.
                               </p>
                               <div className="main-border-button">
-                                <a href="#">Discover More</a>
+                                <a href="/">Discover More</a>
                               </div>
                             </div>
                           </div>
-                          <img src="assets/images/baner-right-image-01.jpg" />
+                          <img src="assets/images/baner-right-image-01.jpg" alt=""/>
                         </div>
                       </div>
                     </div>
@@ -191,11 +192,11 @@ const home = () => {
                                 adipiscing elit incid.
                               </p>
                               <div className="main-border-button">
-                                <a href="#">Discover More</a>
+                                <a href="/">Discover More</a>
                               </div>
                             </div>
                           </div>
-                          <img src="assets/images/baner-right-image-02.jpg" />
+                          <img src="assets/images/baner-right-image-02.jpg" alt=""/>
                         </div>
                       </div>
                     </div>
@@ -214,11 +215,11 @@ const home = () => {
                                 adipiscing elit incid.
                               </p>
                               <div className="main-border-button">
-                                <a href="#">Discover More</a>
+                            <a href="/">Discover More</a>
                               </div>
                             </div>
                           </div>
-                          <img src="assets/images/baner-right-image-03.jpg" />
+                          <img src="assets/images/baner-right-image-03.jpg" alt="" />
                         </div>
                       </div>
                     </div>
@@ -237,11 +238,11 @@ const home = () => {
                                 adipiscing elit incid.
                               </p>
                               <div className="main-border-button">
-                                <a href="#">Discover More</a>
+                                <a href="/">Discover More</a>
                               </div>
                             </div>
                           </div>
-                          <img src="assets/images/baner-right-image-04.jpg" />
+                          <img src="assets/images/baner-right-image-04.jpg" alt=""/>
                         </div>
                       </div>
                     </div>
@@ -253,187 +254,254 @@ const home = () => {
         </div>
         {/* ***** Main Banner Area End ***** */}
         {/* ***** Men Area Starts ***** */}
-  <section className="section" id="men">
-  <div className="container">
-    <div className="row">
-      <div className="col-lg-6">
-        <div className="section-heading">
-          <h2>Men's Latest</h2>
-          <span>
-            Details to details is what makes Hexashop different from the other themes.
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div className="container">
-    <div className="row">
-      <div className="col-lg-12">
-        <div className="men-item-carousel relative"> {/* Added relative for positioning arrows */}
-          <Slider {...settings}>
-            {items.map((item) => (
-              <div className="item" key={item.id}>
-                <div className="thumb">
-                  <div className="hover-content">
-                    <ul>
-                      <li>
-                        <a href="#">
-                          <i className="fa fa-eye" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fa fa-star" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fa fa-shopping-cart" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <img className="mx-1" src={item.imgSrc} alt={item.title} />
-                </div>
-                <div className="down-content">
-                  <h4>{item.title}</h4>
-                  <span>{item.price}</span>
-                  <ul className="stars">
-                    {Array.from({ length: item.stars }).map((_, index) => (
-                      <li key={index}>
-                        <i className="fa fa-star" />
-                      </li>
-                    ))}
-                  </ul>
+        <section className="section" id="men">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-6">
+                <div className="section-heading">
+                  <h2>Men's Latest</h2>
+                  <span>
+                    Details to details is what makes Hexashop different from the
+                    other themes.
+                  </span>
                 </div>
               </div>
-            ))}
-          </Slider>
-          {/* Previous and Next Arrows */}
-          <div className="owl-nav">
-            <div className="owl-prev">
-              <span />
-            </div>
-            <div className="owl-next" >
-              <span />
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="men-item-carousel relative">
+                  {" "}
+                  {/* Added relative for positioning arrows */}
+                  <Slider {...settings}>
+                    {items.map((item) => (
+                      <div className="item" key={item.id}>
+                        <div className="thumb">
+                          <div className="hover-content">
+                            <ul>
+                              <li>
+                                <a href="/">
+                                  <i className="fa fa-eye" />
+                                </a>
+                              </li>
+                              <li>
+                                <a href="/">
+                                  <i className="fa fa-star" />
+                                </a>
+                              </li>
+                              <li>
+                                <a href="/">
+                                  <i className="fa fa-shopping-cart" />
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <img
+                            className="mx-1"
+                            src={item.imgSrc}
+                            alt={item.title}
+                          />
+                        </div>
+                        <div className="down-content">
+                          <h4>{item.title}</h4>
+                          <span>{item.price}</span>
+                          <ul className="stars">
+                            {Array.from({ length: item.stars }).map(
+                              (_, index) => (
+                                <li key={index}>
+                                  <i className="fa fa-star" />
+                                </li>
+                              )
+                            )}
+                          </ul>
+                        </div>
+                      </div>
+                    ))}
+                  </Slider>
+                  {/* Previous and Next Arrows */}
+                  <div className="owl-nav">
+                    <div className="owl-prev">
+                      <span />
+                    </div>
+                    <div className="owl-next">
+                      <span />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* ***** Men Area Ends ***** */}
         {/* ***** Women Area Starts ***** */}
         <section className="section" id="women">
-  <div className="container">
-    <div className="row">
-      <div className="col-lg-6">
-        <div className="section-heading">
-          <h2>Women's Latest</h2>
-          <span>Details to details is what makes Hexashop different from the other themes.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div className="container">
-    <div className="row">
-      <div className="col-lg-12">
-        <div className="women-item-carousel relative"> {/* Added relative for positioning arrows */}
-          <Slider {...settings}>
-            {womenItems.map((item) => (
-              <div className="item" key={item.id}>
-                <div className="thumb">
-                  <div className="hover-content">
-                    <ul>
-                      <li><a href="#"><i className="fa fa-eye" /></a></li>
-                      <li><a href="#"><i className="fa fa-star" /></a></li>
-                      <li><a href="#"><i className="fa fa-shopping-cart" /></a></li>
-                    </ul>
-                  </div>
-                  <img className="mx-1" src={item.imgSrc} alt={item.title} />
-                </div>
-                <div className="down-content">
-                  <h4>{item.title}</h4>
-                  <span>{item.price}</span>
-                  <ul className="stars">
-                    {Array.from({ length: item.stars }).map((_, index) => (
-                      <li key={index}><i className="fa fa-star" /></li>
-                    ))}
-                  </ul>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-6">
+                <div className="section-heading">
+                  <h2>Women's Latest</h2>
+                  <span>
+                    Details to details is what makes Hexashop different from the
+                    other themes.
+                  </span>
                 </div>
               </div>
-            ))}
-          </Slider>
-          {/* Previous and Next Arrows */}
-          <div className="owl-nav">
-            <div className="owl-prev" >
-              <span><i className="fa fa-chevron-left" /></span>
-            </div>
-            <div className="owl-next" >
-              <span><i className="fa fa-chevron-right" /></span>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section className="section" id="kids">
-  <div className="container">
-    <div className="row">
-      <div className="col-lg-6">
-        <div className="section-heading">
-          <h2>Kid's Latest</h2>
-          <span>Details to details is what makes Hexashop different from the other themes.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div className="container">
-    <div className="row">
-      <div className="col-lg-12">
-        <div className="kids-item-carousel relative"> {/* Added relative for positioning arrows */}
-          <Slider {...settings}>
-            {kidsItems.map((item) => (
-              <div className="item" key={item.id}>
-                <div className="thumb">
-                  <div className="hover-content">
-                    <ul>
-                      <li><a href="#"><i className="fa fa-eye" /></a></li>
-                      <li><a href="#"><i className="fa fa-star" /></a></li>
-                      <li><a href="#"><i className="fa fa-shopping-cart" /></a></li>
-                    </ul>
-                  </div>
-                  <img className="mx-1" src={item.imgSrc} alt={item.title} />
-                </div>
-                <div className="down-content">
-                  <h4>{item.title}</h4>
-                  <span>{item.price}</span>
-                  <ul className="stars">
-                    {Array.from({ length: item.stars }).map((_, index) => (
-                      <li key={index}><i className="fa fa-star" /></li>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="women-item-carousel relative">
+                  {" "}
+                  {/* Added relative for positioning arrows */}
+                  <Slider {...settings}>
+                    {womenItems.map((item) => (
+                      <div className="item" key={item.id}>
+                        <div className="thumb">
+                          <div className="hover-content">
+                            <ul>
+                              <li>
+                                <a href="/">
+                                  <i className="fa fa-eye" />
+                                </a>
+                              </li>
+                              <li>
+                                <a href="/">
+                                  <i className="fa fa-star" />
+                                </a>
+                              </li>
+                              <li>
+                                <a href="/">
+                                  <i className="fa fa-shopping-cart" />
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <img
+                            className="mx-1"
+                            src={item.imgSrc}
+                            alt={item.title}
+                          />
+                        </div>
+                        <div className="down-content">
+                          <h4>{item.title}</h4>
+                          <span>{item.price}</span>
+                          <ul className="stars">
+                            {Array.from({ length: item.stars }).map(
+                              (_, index) => (
+                                <li key={index}>
+                                  <i className="fa fa-star" />
+                                </li>
+                              )
+                            )}
+                          </ul>
+                        </div>
+                      </div>
                     ))}
-                  </ul>
+                  </Slider>
+                  {/* Previous and Next Arrows */}
+                  <div className="owl-nav">
+                    <div className="owl-prev">
+                      <span>
+                        <i className="fa fa-chevron-left" />
+                      </span>
+                    </div>
+                    <div className="owl-next">
+                      <span>
+                        <i className="fa fa-chevron-right" />
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            ))}
-          </Slider>
-          {/* Previous and Next Arrows */}
-          <div className="owl-nav">
-            <div className="owl-prev" >
-              <span><i className="fa fa-chevron-left" /></span>
-            </div>
-            <div className="owl-next" >
-              <span><i className="fa fa-chevron-right" /></span>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
+        <section className="section" id="kids">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-6">
+                <div className="section-heading">
+                  <h2>Kid's Latest</h2>
+                  <span>
+                    Details to details is what makes Hexashop different from the
+                    other themes.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="kids-item-carousel relative">
+                  {" "}
+                  {/* Added relative for positioning arrows */}
+                  <Slider {...settings}>
+                    {kidsItems.map((item) => (
+                      <div className="item" key={item.id}>
+                        <div className="thumb">
+                          <div className="hover-content">
+                            <ul>
+                              <li>
+                                <a href="/">
+                                  <i className="fa fa-eye" />
+                                </a>
+                              </li>
+                              <li>
+                                <a href="/">
+                                  <i className="fa fa-star" />
+                                </a>
+                              </li>
+                              <li>
+                                <a href="/">
+                                  <i className="fa fa-shopping-cart" />
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <img
+                            className="mx-1"
+                            src={item.imgSrc}
+                            alt={item.title}
+                          />
+                        </div>
+                        <div className="down-content">
+                          <h4>{item.title}</h4>
+                          <span>{item.price}</span>
+                          <ul className="stars">
+                            {Array.from({ length: item.stars }).map(
+                              (_, index) => (
+                                <li key={index}>
+                                  <i className="fa fa-star" />
+                                </li>
+                              )
+                            )}
+                          </ul>
+                        </div>
+                      </div>
+                    ))}
+                  </Slider>
+                  {/* Previous and Next Arrows */}
+                  <div className="owl-nav">
+                    <div className="owl-prev">
+                      <span>
+                        <i className="fa fa-chevron-left" />
+                      </span>
+                    </div>
+                    <div className="owl-next">
+                      <span>
+                        <i className="fa fa-chevron-right" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* ***** Kids Area Ends ***** */}
         {/* ***** Explore Area Starts ***** */}
@@ -467,7 +535,7 @@ const home = () => {
                     <a
                       rel="nofollow"
                       href="https://paypal.me/templatemo"
-                      target="_blank"
+                       
                     >
                       support us
                     </a>{" "}
@@ -490,12 +558,12 @@ const home = () => {
                     </div>
                     <div className="col-lg-6">
                       <div className="first-image">
-                        <img src="assets/images/explore-image-01.jpg" alt />
+                        <img src="assets/images/explore-image-01.jpg" alt="" />
                       </div>
                     </div>
                     <div className="col-lg-6">
                       <div className="second-image">
-                        <img src="assets/images/explore-image-02.jpg" alt />
+                        <img src="assets/images/explore-image-02.jpg" alt="" />
                       </div>
                     </div>
                     <div className="col-lg-6">
@@ -536,7 +604,7 @@ const home = () => {
                       <i className="fa fa-instagram" />
                     </a>
                   </div>
-                  <img src="assets/images/instagram-01.jpg" alt />
+                  <img src="assets/images/instagram-01.jpg" alt="" />
                 </div>
               </div>
               <div className="col-2">
@@ -547,7 +615,7 @@ const home = () => {
                       <i className="fa fa-instagram" />
                     </a>
                   </div>
-                  <img src="assets/images/instagram-02.jpg" alt />
+                  <img src="assets/images/instagram-02.jpg" alt="" />
                 </div>
               </div>
               <div className="col-2">
@@ -558,7 +626,7 @@ const home = () => {
                       <i className="fa fa-instagram" />
                     </a>
                   </div>
-                  <img src="assets/images/instagram-03.jpg" alt />
+                  <img src="assets/images/instagram-03.jpg" alt="" />
                 </div>
               </div>
               <div className="col-2">
@@ -569,7 +637,7 @@ const home = () => {
                       <i className="fa fa-instagram" />
                     </a>
                   </div>
-                  <img src="assets/images/instagram-04.jpg" alt />
+                  <img src="assets/images/instagram-04.jpg" alt="" />
                 </div>
               </div>
               <div className="col-2">
@@ -580,7 +648,7 @@ const home = () => {
                       <i className="fa fa-instagram" />
                     </a>
                   </div>
-                  <img src="assets/images/instagram-05.jpg" alt />
+                  <img src="assets/images/instagram-05.jpg" alt="" />
                 </div>
               </div>
               <div className="col-2">
@@ -591,7 +659,7 @@ const home = () => {
                       <i className="fa fa-instagram" />
                     </a>
                   </div>
-                  <img src="assets/images/instagram-06.jpg" alt />
+                  <img src="assets/images/instagram-06.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -686,8 +754,8 @@ const home = () => {
                         Social Media:
                         <br />
                         <span>
-                          <a href="#">Facebook</a>, <a href="#">Instagram</a>,{" "}
-                          <a href="#">Behance</a>, <a href="#">Linkedin</a>
+                          <a href="/">Facebook</a>, <a href="/">Instagram</a>,{" "}
+                          <a href="/">Behance</a>, <a href="/">Linkedin</a>
                         </span>
                       </li>
                     </ul>
@@ -698,8 +766,18 @@ const home = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
+function SampleNextArrow(props) {
+  const { className, onClick } = props;
+  return <div className={className} onClick={onClick} />;
+}
+
+function SamplePrevArrow(props) {
+  const { className, onClick } = props;
+  return <div className={className} onClick={onClick} />;
+}
 
 export default home;
