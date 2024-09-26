@@ -6,6 +6,8 @@ import About from "./components/about";
 import SingleProduct from "./components/singleProduct";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Contact from "./components/contact";
+import Carts from "./components/carts";
+import Login from "./components/login";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/singleProduct" element={<SingleProduct />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/carts" element={<Carts />} />
+        <Route path="/login" element={<Login />} />
 
       </Routes>
     </BrowserRouter>

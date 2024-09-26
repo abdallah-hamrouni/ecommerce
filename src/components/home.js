@@ -14,9 +14,7 @@ const home = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-    arrows: true,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+   
 
     responsive: [
       {
@@ -770,14 +768,5 @@ const home = () => {
     </div>
   );
 };
-function SampleNextArrow(props) {
-  const { className, onClick } = props;
-  return <div className={className} onClick={onClick} />;
-}
-
-function SamplePrevArrow(props) {
-  const { className, onClick } = props;
-  return <div className={className} onClick={onClick} />;
-}
 
 export default home;

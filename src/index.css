@@ -17,12 +17,17 @@ code {
 
 .slick-prev {
   left: 3% !important;
-  top: 45%;
+  margin-top: -45px;
   z-index: 1;
+  margin-left: -100px;
+  opacity: 0;
 }
 .slick-next {
   right: 3% !important;
   z-index: 1;
+  margin-top: -45px;
+  margin-right: -120px;
+  opacity: 0;
 }
 .slick-prev, .slick-next {
   font-size: 0;
@@ -39,4 +44,26 @@ code {
   border: none;
   outline: none;
   background: transparent;
+}
+
+
+.ui-w-40 {
+  width: 40px !important;
+  height: auto;
+}
+
+.card{
+  box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
+}
+
+.ui-product-color {
+  display: inline-block;
+  overflow: hidden;
+  margin: .144em;
+  width: .875rem;
+  height: .875rem;
+  border-radius: 10rem;
+  -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+  vertical-align: middle;
 }
