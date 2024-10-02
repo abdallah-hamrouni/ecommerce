@@ -1,5 +1,5 @@
 import React from "react";
-
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 const header =() =>{
     return(
@@ -23,10 +23,10 @@ const header =() =>{
           <li className="submenu">
             <a href="javascript:;">Pages</a>
             <ul>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="products.html">Products</a></li>
-              <li><a href="single-product.html">Single Product</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
+              
+              <li><Link to="/products">Produits</Link></li>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/contact">Contact Us</Link></li>
             </ul>
           </li>
           <li className="submenu">
@@ -38,7 +38,7 @@ const header =() =>{
               <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
             </ul>
           </li>
-          <li className="scroll-to-section"><a href="#explore">Explore</a></li>
+          <li className="scroll-to-section"><Link to="/signup">S'inscrire</Link></li>
         </ul>        
         <a className="menu-trigger">
           <span>Menu</span>

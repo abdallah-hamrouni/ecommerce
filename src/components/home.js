@@ -1,23 +1,26 @@
-import React from "react";
+'use strict';
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Header from './header';
+import Footer from './footer';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+const Home = () => {
+  const [slider, setSlider] = useState(null);
 
-
-
-
-const home = () => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
+    arrows:true,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-
-
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
@@ -36,7 +39,20 @@ const home = () => {
         },
       },
     ],
+
   };
+
+
+
+ 
+  //  function useSlider() {
+  //   const [slider, setSlider] = useState(null);
+    
+  //   const prev = () => slider?.prev();
+  //   const next = () => slider?.next();
+  
+  //   return { slider, setSlider, prev, next };
+  // }
   const womenItems = [
   {
     id: 1,
@@ -132,6 +148,7 @@ const home = () => {
 
   return (
     <div>
+      <Header />
       <div>
         <div className="main-banner" id="top">
           <div className="container-fluid">
@@ -270,7 +287,7 @@ const home = () => {
     <div className="row">
       <div className="col-lg-12">
         <div className="men-item-carousel relative"> {/* Added relative for positioning arrows */}
-          <Slider {...settings}>
+          <Slider ref={setSlider} {...settings}>
             {items.map((item) => (
               <div className="item" key={item.id}>
                 <div className="thumb">
@@ -293,7 +310,10 @@ const home = () => {
                       </li>
                     </ul>
                   </div>
-                  <img className="mx-1" src={item.imgSrc} alt={item.title} />
+                  <Link to="/singleProduct">
+  <img className="mx-1" src={item.imgSrc} alt={item.title} />
+</Link>
+
                 </div>
                 <div className="down-content">
                   <h4>{item.title}</h4>
@@ -309,15 +329,34 @@ const home = () => {
               </div>
             ))}
           </Slider>
-          {/* Previous and Next Arrows */}
-          <div className="owl-nav">
-            <div className="owl-prev">
+         
+        
+
+
+
+           <div className="owl-nav">
+        <div className="owl-prev">
+          <span />
+        </div>
+        <div className="owl-next" >
+          <span />
+        </div>
+      </div> 
+  {/* Previous and Next Arrows */}
+          {/* <div className="owl-nav">
+            <div className="owl-prev" onClick={() => prev()}>
               <span />
             </div>
-            <div className="owl-next" >
+            <div className="owl-next" onClick={() => next()}>
               <span />
             </div>
-          </div>
+          </div> */}
+
+
+      {/* <div className="owl-nav">
+        <button onClick={prev}>Précédent</button>
+        <button onClick={next}>Suivant</button>
+      </div> */}
         </div>
       </div>
     </div>
@@ -367,14 +406,14 @@ const home = () => {
             ))}
           </Slider>
           {/* Previous and Next Arrows */}
-          <div className="owl-nav">
-            <div className="owl-prev" >
-              <span><i className="fa fa-chevron-left" /></span>
-            </div>
-            <div className="owl-next" >
-              <span><i className="fa fa-chevron-right" /></span>
-            </div>
-          </div>
+          <div className="owl-nav ">
+        <div className="owl-prev custom-nav-style">
+          <span />
+        </div>
+        <div className="owl-next custom-nav-style" >
+          <span />
+        </div>
+      </div> 
         </div>
       </div>
     </div>
@@ -394,7 +433,7 @@ const home = () => {
   <div className="container">
     <div className="row">
       <div className="col-lg-12">
-        <div className="kids-item-carousel relative"> {/* Added relative for positioning arrows */}
+        <div className="kids-item-carousel relative xxx"> {/* Added relative for positioning arrows */}
           <Slider {...settings}>
             {kidsItems.map((item) => (
               <div className="item" key={item.id}>
@@ -421,14 +460,14 @@ const home = () => {
             ))}
           </Slider>
           {/* Previous and Next Arrows */}
-          <div className="owl-nav">
-            <div className="owl-prev" >
-              <span><i className="fa fa-chevron-left" /></span>
-            </div>
-            <div className="owl-next" >
-              <span><i className="fa fa-chevron-right" /></span>
-            </div>
-          </div>
+          <div className="owl-nav ">
+        <div className="owl-prev custom-nav-style">
+          <span />
+        </div>
+        <div className="owl-next custom-nav-style" >
+          <span />
+        </div>
+      </div>
         </div>
       </div>
     </div>
@@ -698,8 +737,66 @@ const home = () => {
           </div>
         </div>
       </div>
+      <Footer />
+    </div>
+  );
+};
+const PrevArrow = ({ className, style, onClick }) => {
+  const arrowStyle = {
+    ...style,
+    display: "block",
+    background: "grey",
+    color: "white",
+    borderRadius: "50%",
+    textAlign: "center",
+    lineHeight: "40px",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+    marginLeft: "-60px", 
+    marginTop:"-23px",
+    zIndex:1,
+    opacity:0
+    
+  };
+
+  return (
+    <div
+      className={className}
+      style={arrowStyle}
+      onClick={onClick}
+    >
+      &#10094; {/* Unicode character for left arrow */}
     </div>
   );
 };
 
-export default home;
+const NextArrow = ({ className, style, onClick }) => {
+  const arrowStyle = {
+    ...style,
+    display: "block",
+    background: "grey",
+    color: "white",
+    borderRadius: "50%",
+    textAlign: "center",
+    lineHeight: "40px",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+    marginRight: "-75px",
+    marginTop:"-23px", 
+    zIndex:1,
+    opacity:0
+  };
+
+  return (
+    <div
+      className={className}
+      style={arrowStyle}
+      onClick={onClick}
+    >
+      &#10095; {/* Unicode character for right arrow */}
+    </div>
+  );
+};
+export default Home;

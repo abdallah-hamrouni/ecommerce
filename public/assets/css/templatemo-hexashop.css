@@ -1026,6 +1026,11 @@ Women
   top: 40%;
   transform: translateY(-25px);
 }
+.custom-nav-style {
+  margin-left: -20px; 
+  margin-top: 27px;
+}
+
 
 #women .owl-dots {
   display: none;
