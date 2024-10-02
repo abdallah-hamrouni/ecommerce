@@ -19,7 +19,7 @@ const header =() =>{
           <li className="scroll-to-section"><a href="#women">Women's</a></li>
           <li className="scroll-to-section"><a href="#kids">Kid's</a></li>
           <li className="submenu">
-            <a href="#">Pages</a>
+            <a href="/">Pages</a>
             <ul>
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/products">Products</Link></li>

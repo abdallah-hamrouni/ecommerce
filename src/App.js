@@ -1,13 +1,14 @@
 import "./App.css";
-import Home from "./components/home";
+import Home from "./components/Home";
 import React from "react";
-import Products from "./components/products";
-import About from "./components/about";
-import SingleProduct from "./components/singleProduct";
+import Products from "./components/Products";
+import About from "./components/About";
+import SingleProduct from "./components/SingleProduct";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Contact from "./components/contact";
-import Carts from "./components/carts";
-import Login from "./components/login";
+import Contact from "./components/Contact";
+import Carts from "./components/Carts";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/carts" element={<Carts />} />
         <Route path="/login" element={<Login />} />
-
+        <Route path="/signUp" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );

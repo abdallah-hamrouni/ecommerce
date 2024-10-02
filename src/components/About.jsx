@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "./header";
-import Footer from "./footer";
+import Header from "./Header";
+import Footer from "./Footer";
 
-const about = () => {
+const About = () => {
   return (
     <div>
       <Header />
@@ -360,4 +360,4 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;

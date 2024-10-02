@@ -1,9 +1,9 @@
 import React from "react";
 
-import Footer from "./footer";
-import Header from "./header";
+import Footer from "./Footer";
+import Header from "./Header";
 
-const contact = () => {
+const Contact = () => {
   return (
     <div>
       <Header></Header>
@@ -200,4 +200,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;
