@@ -1,8 +1,8 @@
-import Header from './header';
-import Footer from './footer';
+import Header from './Header';
+import Footer from './Footer';
 import React from "react";
 
-const products =() =>{
+const Products =() =>{
     return(
         
 <>
@@ -290,4 +290,4 @@ const products =() =>{
     )
 }
 
-export default products
+export default Products

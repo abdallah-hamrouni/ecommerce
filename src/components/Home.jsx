@@ -2,8 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Header from './header';
-import Footer from './footer';
+import Header from './Header';
+import Footer from './Footer';
 const home = () => {
   const settings = {
     dots: true,
