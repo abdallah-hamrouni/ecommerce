@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"; // Axios for API requests
 import { GoogleOAuthProvider,GoogleLogin } from '@react-oauth/google';
+import { api_key as clientId } from '../api'; // Import the clientId from api.js
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -25,14 +26,14 @@ const Login = () => {
     }
   };
   const onSuccess = (res)=>{
-    console.log("Loogin Success" , `Token:  ${res.credential}`)
+    console.log("Loogin Success , " , `Token:  ${res.credential}`)
   }
   
 const onError = (res)=>{
     console.log("Loogin failure" , res);
   }
   return (
-    <GoogleOAuthProvider clientId="891812901211-2ahi02tm34vmtqta2599ipkpoc13ii6u.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={clientId}>
       <div>
         <div className="wrapper" style={{ backgroundImage: 'url("assets/images/bg-registration-form-2.jpg")' }}>
           <div className="inner yo">
