@@ -25,9 +25,21 @@ const Login = () => {
       setError('Invalid email or password');
     }
   };
-  const onSuccess = (res)=>{
-    console.log("Loogin Success , " , `Token:  ${res.credential}`)
-  }
+  const onSuccess = async (res) => {
+    console.log("Login Success", `Token: ${res.credential}`);
+    
+    // Send the token to your backend
+    const response = await fetch('http://localhost:5000/api/auth/google-login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token: res.credential }),
+    });
+
+    const data = await response.json();
+    console.log('Backend response:', data);
+};
   
 const onError = (res)=>{
     console.log("Loogin failure" , res);

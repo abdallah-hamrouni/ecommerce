@@ -1,132 +1,125 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Header from './Header';
 import Footer from './Footer';
-const home = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-   
+import axios from "axios";
 
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
+import { Link } from "react-router-dom";
+
+const Home = () => {
+   const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      pauseOnHover: true,
+    
+
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true,
+          },
         },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    };
+    const womenItems = [
+      {
+        id: 1,
+        imgSrc: "assets/images/women-01.jpg",
+        title: "New Green Jacket",
+        price: "$75.00",
+        stars: 5,
       },
       {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
+        id: 2,
+        imgSrc: "assets/images/women-02.jpg",
+        title: "Classic Dress",
+        price: "$45.00",
+        stars: 4,
       },
-    ],
-  };
-  const womenItems = [
-    {
-      id: 1,
-      imgSrc: "assets/images/women-01.jpg",
-      title: "New Green Jacket",
-      price: "$75.00",
-      stars: 5,
-    },
-    {
-      id: 2,
-      imgSrc: "assets/images/women-02.jpg",
-      title: "Classic Dress",
-      price: "$45.00",
-      stars: 4,
-    },
-    {
-      id: 3,
-      imgSrc: "assets/images/women-03.jpg",
-      title: "Spring Collection",
-      price: "$130.00",
-      stars: 5,
-    },
-    {
-      id: 4,
-      imgSrc: "assets/images/women-01.jpg",
-      title: "Classic Spring",
-      price: "$120.00",
-      stars: 4,
-    },
-  ];
+      {
+        id: 3,
+        imgSrc: "assets/images/women-03.jpg",
+        title: "Spring Collection",
+        price: "$130.00",
+        stars: 5,
+      },
+      {
+        id: 4,
+        imgSrc: "assets/images/women-01.jpg",
+        title: "Classic Spring",
+        price: "$120.00",
+        stars: 4,
+      },
+    ];
 
-  const kidsItems = [
-    {
-      id: 1,
-      imgSrc: "assets/images/kid-01.jpg",
-      title: "School Collection",
-      price: "$80.00",
-      stars: 5,
-    },
-    {
-      id: 2,
-      imgSrc: "assets/images/kid-02.jpg",
-      title: "Summer Cap",
-      price: "$12.00",
-      stars: 4,
-    },
-    {
-      id: 3,
-      imgSrc: "assets/images/kid-03.jpg",
-      title: "Classic Kid",
-      price: "$30.00",
-      stars: 5,
-    },
-    {
-      id: 4,
-      imgSrc: "assets/images/kid-01.jpg",
-      title: "Classic Spring",
-      price: "$120.00",
-      stars: 4,
-    },
-  ];
+    const kidsItems = [
+      {
+        id: 1,
+        imgSrc: "assets/images/kid-01.jpg",
+        title: "School Collection",
+        price: "$80.00",
+        stars: 5,
+      },
+      {
+        id: 2,
+        imgSrc: "assets/images/kid-02.jpg",
+        title: "Summer Cap",
+        price: "$12.00",
+        stars: 4,
+      },
+      {
+        id: 3,
+        imgSrc: "assets/images/kid-03.jpg",
+        title: "Classic Kid",
+        price: "$30.00",
+        stars: 5,
+      },
+      {
+        id: 4,
+        imgSrc: "assets/images/kid-01.jpg",
+        title: "Classic Spring",
+        price: "$120.00",
+        stars: 4,
+      },
+    ];
+useEffect(() => {
+    const fetchMenProducts = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/products?category=Woman" 
+        );
+        console.log(response.data);
+        setItems(response.data)
+      } catch (error) {
+        console.error("Error fetching men products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const items = [
-    {
-      id: 1,
-      imgSrc: "assets/images/men-01.jpg",
-      title: "Classic Spring",
-      price: "$120.00",
-      stars: 5,
-    },
-    {
-      id: 2,
-      imgSrc: "assets/images/men-02.jpg",
-      title: "Air Force 1 X",
-      price: "$90.00",
-      stars: 5,
-    },
-    {
-      id: 3,
-      imgSrc: "assets/images/men-03.jpg",
-      title: "Love Nana ‘20",
-      price: "$150.00",
-      stars: 5,
-    },
-    {
-      id: 4,
-      imgSrc: "assets/images/men-01.jpg",
-      title: "Classic Spring",
-      price: "$120.00",
-      stars: 5,
-    },
-  ];
+    fetchMenProducts();
+  }, []);
+ 
 
   return (
     <div>
@@ -250,256 +243,87 @@ const home = () => {
             </div>
           </div>
         </div>
-        {/* ***** Main Banner Area End ***** */}
-        {/* ***** Men Area Starts ***** */}
+       
         <section className="section" id="men">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-6">
-                <div className="section-heading">
-                  <h2>Men's Latest</h2>
-                  <span>
-                    Details to details is what makes Hexashop different from the
-                    other themes.
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="men-item-carousel relative">
-                  {" "}
-                  {/* Added relative for positioning arrows */}
-                  <Slider {...settings}>
-                    {items.map((item) => (
-                      <div className="item" key={item.id}>
-                        <div className="thumb">
-                          <div className="hover-content">
-                            <ul>
-                              <li>
-                                <a href="/">
-                                  <i className="fa fa-eye" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="/">
-                                  <i className="fa fa-star" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="/">
-                                  <i className="fa fa-shopping-cart" />
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <img
-                            className="mx-1"
-                            src={item.imgSrc}
-                            alt={item.title}
-                          />
-                        </div>
-                        <div className="down-content">
-                          <h4>{item.title}</h4>
-                          <span>{item.price}</span>
-                          <ul className="stars">
-                            {Array.from({ length: item.stars }).map(
-                              (_, index) => (
-                                <li key={index}>
-                                  <i className="fa fa-star" />
-                                </li>
-                              )
-                            )}
-                          </ul>
-                        </div>
-                      </div>
-                    ))}
-                  </Slider>
-                  {/* Previous and Next Arrows */}
-                  <div className="owl-nav">
-                    <div className="owl-prev">
-                      <span />
+  <div className="container">
+    <div className="row">
+      <div className="col-lg-6">
+        <div className="section-heading">
+          <h2>Women's Latest</h2>
+          <span>
+            Details to details is what makes Hexashop different from the other themes.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div className="container">
+    <div className="row">
+      <div className="col-lg-12">
+        <div className="men-item-carousel relative">
+          {/* Ensure settings is defined for your slider */}
+          <Slider {...settings}>
+            {items.length === 0 ? (
+              <div>Loading...</div> // Display loading message if items are empty
+            ) : (
+              items.map((item) => (
+                <div className="item" key={item._id}> {/* Use _id for unique key */}
+                  <div className="thumb">
+                    <div className="hover-content">
+                      <ul>
+                        <li>
+                          <a href="/">
+                            <i className="fa fa-eye" />
+                          </a>
+                        </li>
+                        
+                        <li>
+                          <a href="/">
+                            <i className="fa fa-shopping-cart" />
+                          </a>
+                        </li>
+                      </ul>
                     </div>
-                    <div className="owl-next">
-                      <span />
-                    </div>
+                    <Link to="/singleProduct">
+                      <img style={{height:"480px",width:"350px",cursor:"pointer"}}
+                      className="mx-1"
+                      src={item.image} // Use item.image for the image URL
+                      
+                    />
+                    </Link>
+                  </div>
+                  <div className="down-content">
+                    <h4>{item.name}</h4>  {/* Display product name */}
+                    <span>${item.price}</span>  {/* Display price */}
+                   
                   </div>
                 </div>
-              </div>
+              ))
+            )}
+          </Slider>
+
+          {/* Previous and Next Arrows */}
+          <div className="owl-nav">
+            <div className="owl-prev">
+              <span />
+            </div>
+            <div className="owl-next">
+              <span />
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+          <div className="main-border-button">
+              <a href="/">Discover More</a>
+          </div>
 
         {/* ***** Men Area Ends ***** */}
         {/* ***** Women Area Starts ***** */}
-        <section className="section" id="women">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-6">
-                <div className="section-heading">
-                  <h2>Women's Latest</h2>
-                  <span>
-                    Details to details is what makes Hexashop different from the
-                    other themes.
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="women-item-carousel relative">
-                  {" "}
-                  {/* Added relative for positioning arrows */}
-                  <Slider {...settings}>
-                    {womenItems.map((item) => (
-                      <div className="item" key={item.id}>
-                        <div className="thumb">
-                          <div className="hover-content">
-                            <ul>
-                              <li>
-                                <a href="/">
-                                  <i className="fa fa-eye" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="/">
-                                  <i className="fa fa-star" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="/">
-                                  <i className="fa fa-shopping-cart" />
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <img
-                            className="mx-1"
-                            src={item.imgSrc}
-                            alt={item.title}
-                          />
-                        </div>
-                        <div className="down-content">
-                          <h4>{item.title}</h4>
-                          <span>{item.price}</span>
-                          <ul className="stars">
-                            {Array.from({ length: item.stars }).map(
-                              (_, index) => (
-                                <li key={index}>
-                                  <i className="fa fa-star" />
-                                </li>
-                              )
-                            )}
-                          </ul>
-                        </div>
-                      </div>
-                    ))}
-                  </Slider>
-                  {/* Previous and Next Arrows */}
-                  <div className="owl-nav">
-                    <div className="owl-prev">
-                      <span>
-                        <i className="fa fa-chevron-left" />
-                      </span>
-                    </div>
-                    <div className="owl-next">
-                      <span>
-                        <i className="fa fa-chevron-right" />
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="section" id="kids">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-6">
-                <div className="section-heading">
-                  <h2>Kid's Latest</h2>
-                  <span>
-                    Details to details is what makes Hexashop different from the
-                    other themes.
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="kids-item-carousel relative">
-                  {" "}
-                  {/* Added relative for positioning arrows */}
-                  <Slider {...settings}>
-                    {kidsItems.map((item) => (
-                      <div className="item" key={item.id}>
-                        <div className="thumb">
-                          <div className="hover-content">
-                            <ul>
-                              <li>
-                                <a href="/">
-                                  <i className="fa fa-eye" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="/">
-                                  <i className="fa fa-star" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="/">
-                                  <i className="fa fa-shopping-cart" />
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <img
-                            className="mx-1"
-                            src={item.imgSrc}
-                            alt={item.title}
-                          />
-                        </div>
-                        <div className="down-content">
-                          <h4>{item.title}</h4>
-                          <span>{item.price}</span>
-                          <ul className="stars">
-                            {Array.from({ length: item.stars }).map(
-                              (_, index) => (
-                                <li key={index}>
-                                  <i className="fa fa-star" />
-                                </li>
-                              )
-                            )}
-                          </ul>
-                        </div>
-                      </div>
-                    ))}
-                  </Slider>
-                  {/* Previous and Next Arrows */}
-                  <div className="owl-nav">
-                    <div className="owl-prev">
-                      <span>
-                        <i className="fa fa-chevron-left" />
-                      </span>
-                    </div>
-                    <div className="owl-next">
-                      <span>
-                        <i className="fa fa-chevron-right" />
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        
 
         {/* ***** Kids Area Ends ***** */}
         {/* ***** Explore Area Starts ***** */}
@@ -769,4 +593,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;

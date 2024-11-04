@@ -2,8 +2,9 @@ import React from "react";
 
 import Footer from './Footer';
 import Header from './Header';
-
+import { useEffect } from "react";
 const singleProduct =() =>{
+  
     return(
         <div>
             <Header/>
@@ -21,8 +22,7 @@ const singleProduct =() =>{
       </div>
     </div>
   </div>
-  {/* ***** Main Banner Area End ***** */}
-  {/* ***** Product Area Starts ***** */}
+  
   <section className="section" id="product">
     <div className="container">
       <div className="row">
