@@ -1,46 +1,72 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios"; // Axios for API requests
+import { Link,useNavigate } from "react-router-dom";
+import axios from "axios"; 
 import { GoogleOAuthProvider,GoogleLogin } from '@react-oauth/google';
-import { api_key as clientId } from '../api'; // Import the clientId from api.js
-
+import { api_key as clientId } from '../api'; 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
+  const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault(); 
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post('http://localhost:5000/login', {
         email,
         password,
       });
 
       if (response.status === 200) {
         localStorage.setItem('token', response.data.token);
+        navigate('/');
       }
     } catch (error) {
       setError('Invalid email or password');
     }
   };
-  const onSuccess = async (res) => {
-    console.log("Login Success", `Token: ${res.credential}`);
+//   const onSuccess = async (res) => {
+//     console.log("Login Success", `Token: ${res.credential}`);
     
-    // Send the token to your backend
-    const response = await fetch('http://localhost:5000/api/auth/google-login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token: res.credential }),
-    });
-
-    const data = await response.json();
-    console.log('Backend response:', data);
-};
   
+//     const response = await fetch('http://localhost:5000/api/auth/google', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ token: res.credential }),
+        
+//     },
+//     localStorage.setItem('token', res.credential),
+//     navigate('/')
+//   );
+
+//     const data = await response.json();
+//     console.log('Backend response:', data);
+// };
+const onSuccess = async (res) => {
+  console.log("Login Success", `Token: ${res.credential}`);
+
+  // Envoyer la requête POST au backend
+  const response = await fetch('http://localhost:5000/api/auth/google', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token: res.credential }),
+  });
+
+  if (response.ok) { // Vérifie si la réponse est réussie (status code 2xx)
+      const data = await response.json();
+      console.log('Backend response:', data);
+
+      // Enregistrer le token dans le localStorage et rediriger l'utilisateur
+      localStorage.setItem('token', res.credential);
+      navigate('/');
+  } else {
+      console.error('Erreur lors de la requête au backend:', response.statusText);
+  }
+};
 const onError = (res)=>{
     console.log("Loogin failure" , res);
   }
@@ -81,7 +107,7 @@ const onError = (res)=>{
               {/* Google login button */}
               <div className="google-login-wrapper">
                 <GoogleLogin
-                  clientId="891812901211-2ahi02tm34vmtqta2599ipkpoc13ii6u.apps.googleusercontent.com"
+                  clientId={clientId}
                   onSuccess={onSuccess}
                   onError={onError}
                 />

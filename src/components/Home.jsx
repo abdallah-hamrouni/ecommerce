@@ -106,7 +106,7 @@ useEffect(() => {
     const fetchMenProducts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/products?category=Woman" 
+          "http://localhost:5000/produits?category=Woman" 
         );
         console.log(response.data);
         setItems(response.data)
@@ -119,8 +119,40 @@ useEffect(() => {
 
     fetchMenProducts();
   }, []);
- 
+  const ajouterAuPanier = async (item) => {
+    // Vérification de la présence du token dans le local storage
+    let token = localStorage.getItem('token');
 
+    if (!token) {
+        // Si le token n'est pas présent, affichez un message d'alerte et retournez
+        alert("Vous devez être connecté pour ajouter des produits au panier.");
+        return;
+    }
+
+    try {
+        const response = await axios.post('http://localhost:5000/panier', {
+            panelId: item._id,           
+            nom: item.nom,               
+            prix: item.prix,             
+            image: item.image,           
+            categorie: item.categorie,    
+            quantite: 1,                 
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}` // Ajout du token aux en-têtes de la requête
+            }
+        });
+        if (response.status === 200) {
+            alert('Produit ajouté au panier avec succès !');
+        } else {
+            alert("Échec de l'ajout du produit au panier.");
+        }
+    } catch (error) {
+        console.error("Erreur lors de l'ajout au panier:", error);
+        alert("Erreur lors de l'ajout au panier.");
+    }
+};
+  
   return (
     <div>
       <Header/>
@@ -279,9 +311,9 @@ useEffect(() => {
                         </li>
                         
                         <li>
-                          <a href="/">
-                            <i className="fa fa-shopping-cart" />
-                          </a>
+                        <a onClick={() => ajouterAuPanier(item)}>
+                      <i className="fa fa-shopping-cart" />
+                    </a>
                         </li>
                       </ul>
                     </div>
@@ -294,8 +326,8 @@ useEffect(() => {
                     </Link>
                   </div>
                   <div className="down-content">
-                    <h4>{item.name}</h4>  {/* Display product name */}
-                    <span>${item.price}</span>  {/* Display price */}
+                    <h4>{item.nom}</h4>  {/* Display product name */}
+                    <span>${item.prix}</span>  {/* Display price */}
                    
                   </div>
                 </div>
