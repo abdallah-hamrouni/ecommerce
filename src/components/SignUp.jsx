@@ -6,7 +6,7 @@ const Signup = () => {
   const [name, setName] = useState(''); // Name field
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [pass, setConfirmPassword] = useState('');
   const [phone, setPhone] = useState(''); // Phone field
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -14,19 +14,21 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
+    if (password !== pass) {
       setError("Passwords do not match");
       return;
     }
 
     try {
       // Make a POST request to the API route
-      const response = await axios.post('http://localhost:5000/api/auth/register', {
+      const response = await axios.post('http://localhost:5000/register', {
         name,
         email,
         password,
+        pass,
         phone,
       });
+console.log(pass);
 
       if (response.status === 201) {
         navigate('/login');
@@ -51,6 +53,7 @@ const Signup = () => {
                 className="form-control"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                style={{ width: '50%' }}
                 required
               />
             </div>
@@ -63,6 +66,7 @@ const Signup = () => {
                 className="form-control"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                style={{ width: '50%',marginLeft:'10px' }}
                 required
               />
             </div>
@@ -75,6 +79,7 @@ const Signup = () => {
                 className="form-control"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                style={{ width: '50%' }}
                 required
               />
             </div>
@@ -85,8 +90,9 @@ const Signup = () => {
               <input
                 type="password"
                 className="form-control"
-                value={confirmPassword}
+                value={pass}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                style={{ width: '50%' }}
                 required
               />
             </div>
@@ -99,6 +105,7 @@ const Signup = () => {
                 className="form-control"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
+                style={{ width: '50%' }}
                 required
               />
             </div>

@@ -37,9 +37,13 @@ const header =() =>{
               </svg>
               <span class="quantity"></span>
             </button>
+            <Link to="/carts">
             <a href="">My Cart</a>
+            </Link>
+            
         </li>
-        <li><a href="">Login</a></li>
+        <li>
+        <Link to="/login"><a href="">Login</a>     </Link></li>
         </ul>        
           <a href="/" className="menu-trigger">
             <span>Menu</span>
