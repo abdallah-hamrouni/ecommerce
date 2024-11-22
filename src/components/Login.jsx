@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios"; // Axios for API requests
+import axios from "axios"; 
 import { GoogleOAuthProvider,GoogleLogin } from '@react-oauth/google';
-import { api_key as clientId } from '../api'; // Import the clientId from api.js
-
+import { api_key as clientId } from '../api'; 
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
+  const navigate = useNavigate();
+  
   const handleLogin = async (e) => {
     e.preventDefault(); 
 
@@ -19,7 +20,11 @@ const Login = () => {
       });
 
       if (response.status === 200) {
+        localStorage.removeItem('token');
         localStorage.setItem('token', response.data.token);
+        
+        navigate('/')
+
       }
     } catch (error) {
       setError('Invalid email or password');
@@ -27,8 +32,9 @@ const Login = () => {
   };
   const onSuccess = async (res) => {
     console.log("Login Success", `Token: ${res.credential}`);
-    
-    // Send the token to your backend
+    localStorage.setItem('token', res.credential);
+    console.log('ahla bik : ',res.credential );
+
     const response = await fetch('http://localhost:5000/api/auth/google-login', {
         method: 'POST',
         headers: {
@@ -39,6 +45,9 @@ const Login = () => {
 
     const data = await response.json();
     console.log('Backend response:', data);
+    console.log();
+    navigate('/')
+
 };
   
 const onError = (res)=>{
@@ -81,7 +90,7 @@ const onError = (res)=>{
               {/* Google login button */}
               <div className="google-login-wrapper">
                 <GoogleLogin
-                  clientId="891812901211-2ahi02tm34vmtqta2599ipkpoc13ii6u.apps.googleusercontent.com"
+                  clientId={clientId}
                   onSuccess={onSuccess}
                   onError={onError}
                 />
@@ -89,6 +98,7 @@ const onError = (res)=>{
             </form>
           </div>
         </div>
+
       </div>
     </GoogleOAuthProvider>
   );

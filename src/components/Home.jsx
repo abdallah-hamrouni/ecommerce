@@ -41,67 +41,7 @@ const Home = () => {
         },
       ],
     };
-    const womenItems = [
-      {
-        id: 1,
-        imgSrc: "assets/images/women-01.jpg",
-        title: "New Green Jacket",
-        price: "$75.00",
-        stars: 5,
-      },
-      {
-        id: 2,
-        imgSrc: "assets/images/women-02.jpg",
-        title: "Classic Dress",
-        price: "$45.00",
-        stars: 4,
-      },
-      {
-        id: 3,
-        imgSrc: "assets/images/women-03.jpg",
-        title: "Spring Collection",
-        price: "$130.00",
-        stars: 5,
-      },
-      {
-        id: 4,
-        imgSrc: "assets/images/women-01.jpg",
-        title: "Classic Spring",
-        price: "$120.00",
-        stars: 4,
-      },
-    ];
-
-    const kidsItems = [
-      {
-        id: 1,
-        imgSrc: "assets/images/kid-01.jpg",
-        title: "School Collection",
-        price: "$80.00",
-        stars: 5,
-      },
-      {
-        id: 2,
-        imgSrc: "assets/images/kid-02.jpg",
-        title: "Summer Cap",
-        price: "$12.00",
-        stars: 4,
-      },
-      {
-        id: 3,
-        imgSrc: "assets/images/kid-03.jpg",
-        title: "Classic Kid",
-        price: "$30.00",
-        stars: 5,
-      },
-      {
-        id: 4,
-        imgSrc: "assets/images/kid-01.jpg",
-        title: "Classic Spring",
-        price: "$120.00",
-        stars: 4,
-      },
-    ];
+    
 useEffect(() => {
     const fetchMenProducts = async () => {
       try {
@@ -119,6 +59,24 @@ useEffect(() => {
 
     fetchMenProducts();
   }, []);
+
+ const addToCart = async (productId, quantity = 1) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    console.error('No token found, please login');
+    return;
+  }
+  try {
+    const response = await axios.post(
+      "http://localhost:5000/api/carts/addToCart",
+      { productId, quantity },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    console.log('Product added to cart:', response.data);
+  } catch (error) {
+    console.error('Error adding to cart:', error.response ? error.response.data : error.message);
+  }
+};
  
 
   return (
@@ -273,19 +231,19 @@ useEffect(() => {
                     <div className="hover-content">
                       <ul>
                         <li>
-                          <a href="/">
+                          <Link to="/">
                             <i className="fa fa-eye" />
-                          </a>
+                          </Link>
                         </li>
                         
                         <li>
-                          <a href="/">
-                            <i className="fa fa-shopping-cart" />
-                          </a>
+                         <Link onClick={() => addToCart(item._id, 1)}>
+                             <i className="fa fa-shopping-cart" />
+                          </Link>
                         </li>
                       </ul>
                     </div>
-                    <Link to="/singleProduct">
+                    <Link to={`/singleProduct/${item._id}`}>
                       <img style={{height:"480px",width:"350px",cursor:"pointer"}}
                       className="mx-1"
                       src={item.image} // Use item.image for the image URL
@@ -321,12 +279,7 @@ useEffect(() => {
               <a href="/">Discover More</a>
           </div>
 
-        {/* ***** Men Area Ends ***** */}
-        {/* ***** Women Area Starts ***** */}
         
-
-        {/* ***** Kids Area Ends ***** */}
-        {/* ***** Explore Area Starts ***** */}
         <section className="section" id="explore">
           <div className="container">
             <div className="row">

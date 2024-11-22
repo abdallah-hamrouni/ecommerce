@@ -12,11 +12,7 @@ import SignUp from "./components/SignUp";
 
 function App() {
   return (
-    /* <div className="App">
-      <Header />
-       <Home /> 
-      <Footer />
-  </div> */
+    
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -27,6 +23,7 @@ function App() {
         <Route path="/carts" element={<Carts />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/singleProduct/:id"  element={<SingleProduct />}/>
       </Routes>
     </BrowserRouter>
   );
